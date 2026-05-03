@@ -1,5 +1,11 @@
 #Kai Hoffman DSCI 410 data prep
 
+#README
+#Run this script in a folder containing all the raw data downloaded from the course "files" page
+#All EugeneCAD2015-2025.csv data should be taken out of the zip and placed in this directory -
+#along with the 2015-2025 SPD calls for service and MCSLC.xlsx files
+
+
 ###Loading necessary libraries
 library("tidyverse")
 library("readxl")
