@@ -1,4 +1,4 @@
-# DSCI 410 Final Project - Kai Hoffman
+# DSCI 410 Final Project - Kai Hoffman (WORK IN PROGRESS)
 DSCI 410's Final Project involving CAHOOTS, EPD, SPD, and MCSLC data.
 
 This repository contains the R-scripts for cleaning, preparation, analysis, and visualization creation of the raw data collected by Dr. Rohlfs for the DSCI 410 class at the University of Oregon.  
