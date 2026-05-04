@@ -79,6 +79,16 @@ MCSLC = MCSLC %>%
 MCSLC = MCSLC %>%
   drop_na(Time)
 
+#Remove Duplicates
+EugeneAll = EugeneAll %>% 
+  distinct(Time)
+
+SpringfieldAll = SpringfieldAll %>%
+  distinct(Time)
+
+MCSLC = MCSLC %>% 
+  distinct(Time)
+
 ###Writing compiled .csv files to a new folder in the current directory
 dir.create("CompiledData")
 write_csv(EugeneAll, "CompiledData/EugeneAll.csv")
