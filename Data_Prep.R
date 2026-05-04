@@ -5,12 +5,13 @@
 #All EugeneCAD2015-2025.csv data should be taken out of the zip and placed in this directory -
 #along with the 2015-2025 SPD calls for service and MCSLC.xlsx files
 
-
 ###Loading necessary libraries
 library("tidyverse")
 library("readxl")
+
 ###Make sure above libraries are loaded and environment is empty before running script
 rm(list=ls())
+setwd("C:/Users/kaiho/OneDrive/Desktop/DSCI 410/Final_Project")
 
 ###Loading the data
 MCSLC = read_excel("MCSLC.xlsx")
@@ -81,13 +82,13 @@ MCSLC = MCSLC %>%
 
 #Remove Duplicates
 EugeneAll = EugeneAll %>% 
-  distinct(Time)
+  distinct(Time, .keep_all = TRUE)
 
 SpringfieldAll = SpringfieldAll %>%
-  distinct(Time)
+  distinct(Time, .keep_all = TRUE)
 
 MCSLC = MCSLC %>% 
-  distinct(Time)
+  distinct(Time, .keep_all = TRUE)
 
 ###Writing compiled .csv files to a new folder in the current directory
 dir.create("CompiledData")
