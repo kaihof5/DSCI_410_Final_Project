@@ -5,5 +5,5 @@ This repository contains the R-scripts for cleaning, preparation, analysis, and 
 Each of the scripts have instructions on how to run them within the file, as well as descriptions of what the code is doing.
 
 The files should be ran in the following order:  
-- `Data_Prep.r`
-- `All_Data_Sync.r`
+- `Data_Prep.r` <- Combines and prepares all raw data.
+- `All_Data_Sync.r` <- Identifies CAHOOTS data and combines all datasets into one.
