@@ -4,7 +4,7 @@ DSCI 410's Final Project involving CAHOOTS, EPD, SPD, and MCSLC data.
 This repository contains the R-scripts for cleaning, preparation, analysis, and visualization creation of the raw data collected by Dr. Rohlfs for the DSCI 410 class at the University of Oregon.  
 Each of the scripts have instructions on how to run them within the file, as well as descriptions of what the code is doing.
 
-The R libraries needed to run these scripts are:
+The **R Packages** needed to run these scripts are:
 - tidyverse  
 - readxl
 
@@ -20,6 +20,7 @@ Before you run the scripts the folder should look something like this:
 ## For those unfamiliar with R-Studio:  
 - First download R-studio and R by following these instructions: https://rstudio-education.github.io/hopr/starting.html
 - Once R-Studio is installed, double-click the `Data_Prep.r` file and it should open.
+- Make sure to install the required packages from above, following instructions from this link: https://libguides.chapman.edu/R/packages#:~:text=Installing%20Packages&text=The%20default%20option%20is%20to,the%20Script%20Editor%2C%20type%20install.
 - Navigate to the Session dropdown in the top bar, then Set Working Directory, then Choose Directory..., and then navigate to your folder containing all the data.
   <img width="691" height="508" alt="Screenshot 2026-05-06 000248" src="https://github.com/user-attachments/assets/48b74d49-bf69-4ac9-b6eb-7340aa304724" />
 - To run the code within R-Studio, either press Ctrl+Enter to run on the selected lines of code, or Alt+Ctrl+R to run the whole script at once.
