@@ -4,18 +4,18 @@
 #where Organization will either be: EPD, SPD, E-MCSLC, S-MCSLC, E-CHT, S-CHT, or O-MCSLC
 
 #READ
-#This script should be run in the folder containing the compiled data writen by the "Data_Prep.r" file
+#This script should be run in the same folder Data_Prep.r was run in,
+#the same one containing the "CompiledData" folder
 
 ###Required packages
 library("tidyverse")
 
 rm(list = ls())
-setwd("C:/Users/kaiho/OneDrive/Desktop/DSCI 410/Final_Project/CompiledData")
 
 ###Import files
-EugeneData = read_csv("EugeneAll.csv")
-SpringfieldData = read_csv("SpringfieldAll.csv")
-MCSLCData = read_csv("MCSLC_Trimed.csv")
+EugeneData = read_csv("CompiledData/EugeneAll.csv")
+SpringfieldData = read_csv("CompiledData/SpringfieldAll.csv")
+MCSLCData = read_csv("CompiledData/MCSLC_Trimed.csv")
 
 ##Make CAHOOTSBinary column work for EPD and SPD
 # Ways CAHOOTS is identified: 
@@ -26,6 +26,7 @@ MCSLCData = read_csv("MCSLC_Trimed.csv")
 EugeneData = EugeneData %>% 
   mutate(
     CAHOOTSBinary = ifelse(
+      #Make CAHOOTSBinary a 1 for the following cases
       agency == "CAHE" |
       CAHOOTSBinary == "_CAHOT" |
       str_detect(CAHOOTSBinary, "J") |
@@ -48,6 +49,8 @@ SpringfieldData = SpringfieldData %>%
 EugeneData = EugeneData %>% 
   mutate(
     Organization = ifelse(
+      #If CAHOOTSBinary is a 1, that means that the organization that took the call was CAHOOTS,
+      #therefore we assign organization to the respective E/S-CAHOOTS
       CAHOOTSBinary == 1 ,
       "E-CAHOOTS", "EPD"
     )
@@ -56,7 +59,8 @@ EugeneData = EugeneData %>%
 SpringfieldData = SpringfieldData %>%  
   mutate(
     Organization = ifelse(
-      CAHOOTSBinary == 1 ,
+      CAHOOTSBinary == 1 |
+      is.na(CAHOOTSBinary) == TRUE,
       "S-CAHOOTS", "SPD"
     )
   ) %>%  select(Time, Organization, CallType)
@@ -64,6 +68,7 @@ SpringfieldData = SpringfieldData %>%
 MCSLCData = MCSLCData %>% 
   mutate(
     Organization = case_when(
+      #Splitting MCSLC in E/S/O-MCSLC depending on city variable
       City == "Eugene" ~ "E-MCSLC",
       City == "Springfield" ~ "S-MCSLC",
       TRUE ~ "O-MCSLC"

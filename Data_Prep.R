@@ -2,8 +2,11 @@
 
 #README
 #Run this script in a folder containing all the raw data downloaded from the course "files" page
-#All EugeneCAD2015-2025.csv data should be taken out of the zip and placed in this directory -
-#along with the 2015-2025 SPD calls for service and MCSLC.xlsx files
+#This means that in this directory there should be:
+#MCSLC.xlsx
+#2015-2025 SPD Calls for Service.xlsx
+#Eugene_CAD_data_noloc folder
+
 
 ###Loading necessary libraries
 library("tidyverse")
@@ -11,7 +14,7 @@ library("readxl")
 
 ###Make sure above libraries are loaded and environment is empty before running script
 rm(list=ls())
-setwd("C:/Users/kaiho/OneDrive/Desktop/DSCI 410/Final_Project")
+
 
 ###Loading the data
 MCSLC = read_excel("MCSLC.xlsx")
@@ -23,7 +26,7 @@ yearEnd = 2025
 
 for (i in yearStart:yearEnd) {
   assign(paste0("SPD",i), read_excel("2015-2025 SPD Calls for Service.xlsx", sheet = as.character(i)))
-  assign(paste0("EPD",i), read_csv(str_glue("EugeneCAD{as.character(i)}noloc.csv")))
+  assign(paste0("EPD",i), read_csv(str_glue("Eugene_CAD_data_noloc/EugeneCAD{as.character(i)}noloc.csv")))
   
 }
 rm(i)
@@ -39,10 +42,12 @@ SPD2021 = SPD2021 %>%
 SPD2025 = SPD2025 %>%
   mutate(Priority = as.numeric(Priority))
 
+#Assign to first year data so we bind_rows() will work
 EugeneAll = get(paste0("EPD",yearStart))
 SpringfieldAll = get(paste0("SPD",yearStart))
 
 for (i in (yearStart+1):yearEnd) {
+  #iteratively add year i data to datasets
   EugeneAll = bind_rows(EugeneAll, get(paste0("EPD",i)))
   SpringfieldAll = bind_rows(SpringfieldAll, get(paste0("SPD",i)))
   #print(i)
@@ -50,7 +55,7 @@ for (i in (yearStart+1):yearEnd) {
 }
 rm(i)
 
-###Get rid of singular year variables to free of space
+###Get rid of singular year variables to free up space
 rm(list = ls(pattern = "^EPD"))
 rm(list = ls(pattern = "^SPD"))
 
