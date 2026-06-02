@@ -84,13 +84,16 @@ MCSLC = MCSLC %>%
 #Dropping NA's in Time column for MCSLC
 MCSLC = MCSLC %>%
   drop_na(Time)
+  
 
 #Remove Duplicates
 EugeneAll = EugeneAll %>% 
-  distinct(Time, .keep_all = TRUE)
+  distinct(Time, .keep_all = TRUE) %>% 
+  drop_na(CAHOOTSBinary)
 
 SpringfieldAll = SpringfieldAll %>%
-  distinct(Time, .keep_all = TRUE)
+  distinct(Time, .keep_all = TRUE) %>% 
+  drop_na(CAHOOTSBinary)
 
 MCSLC = MCSLC %>% 
   distinct(Time, .keep_all = TRUE)

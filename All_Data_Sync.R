@@ -12,6 +12,7 @@ library("tidyverse")
 
 rm(list = ls())
 
+
 ###Import files
 EugeneData = read_csv("CompiledData/EugeneAll.csv")
 SpringfieldData = read_csv("CompiledData/SpringfieldAll.csv")
