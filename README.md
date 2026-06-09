@@ -1,12 +1,20 @@
-# DSCI 410 Final Project - Kai Hoffman (WORK IN PROGRESS)
+# DSCI 410 Final Project - Kai Hoffman 
 DSCI 410's Final Project involving CAHOOTS, EPD, SPD, and MCSLC data.
 
 This repository contains the R-scripts for cleaning, preparation, analysis, and visualization creation of the raw data collected by Dr. Rohlfs for the DSCI 410 class at the University of Oregon.  
-Each of the scripts have instructions on how to run them within the file, as well as descriptions of what the code is doing.
+Each of the scripts have instructions on how to run them within the file, as well as descriptions of what the code is doing.  
+Links to the final presentation and report are here:  
+[`Presentation`](<https://docs.google.com/presentation/d/153jc9OMFDgaTweodESqrXpvxcxRXqKyxap-1pUejytk/edit?usp=sharing>)  
+[`Report`](<https://docs.google.com/document/d/1ymCW3LigLWWifWr2ZzTLpcYoyqs1jo-HZ2JOQFsUJsQ/edit?usp=sharing>)
 
 The **R Packages** needed to run these scripts are:
 - tidyverse  
 - readxl
+- lubridate
+- zoo
+- plotly
+- ggplot2
+- scales
 
 ## All scripts should be put in a folder containing:
 - The "2015-2025 SPD Calls for Service.xlsx" file - Downloaded from Canvas files
